@@ -8,7 +8,6 @@ FLAGS	= -Wall -Wextra -Werrorr
 AR = ar 
 RM = rm -fr
 
-
 $(NAME): 
 	$(CC) $(FLAGS) -c $(SRCS) -I ./
 	$(AR) $(NAME) $(OBJ)
