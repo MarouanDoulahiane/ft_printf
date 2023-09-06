@@ -2,8 +2,8 @@
 
 void	ft_putnbr_base(unsigned int nb, char xX)
 {
-	char	*base;
-	int		base_len;
+	char			*base;
+	unsigned int	base_len;
 
 	base_len = 16;
 	if (xX == 'x')

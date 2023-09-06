@@ -2,8 +2,8 @@
 
 void	ft_putnbr_base_addr(unsigned long nb)
 {
-	char	*base;
-	int		base_len;
+	char			*base;
+	unsigned long	base_len;
 
 	base_len = 16;
 	base = "0123456789abcdef";

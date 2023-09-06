@@ -4,7 +4,7 @@ SRCS=    ft_printf.c ft_putaddr.c ft_putchar.c ft_putnbr.c \
 OBJ = $(SRCS:%.c=%.o)
 
 CC = gcc
-FLAGS	= -Wall -Wextra -Werrorr
+FLAGS	= -W -W -W
 AR = ar 
 RM = rm -fr
 
