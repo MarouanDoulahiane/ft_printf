@@ -9,10 +9,12 @@ all: libft.a
 libft.a: $(OBJ)
 	ar -rcs $@ $^
 
-clean:
-	rm -f $(OBJ) libft.a
 
 fclean: clean
-	rm -f *.o
+	rm -f libft.a
+
+clean:
+	rm -f $(OBJ)
+
 
 re: fclean all
