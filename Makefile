@@ -7,14 +7,16 @@ OBJ = $(SRC:.c=.o)
 all: libft.a
 
 libft.a: $(OBJ)
-	ar -rcs $@ $^
+	@ar -rcs $@ $^
 
+%.o:%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 fclean: clean
-	rm -f libft.a
+	@rm -f libft.a
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 
 re: fclean all
