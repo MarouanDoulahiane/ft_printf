@@ -4,7 +4,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-void	ft_putchar(int nb);
+void	ft_putnbr(int nb);
 void	ft_putstr(char *str);
 void	ft_putnbr_u(unsigned int nb);
 void	ft_putnbr_base(unsigned int nb, char xX);

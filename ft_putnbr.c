@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void	ft_putchar(int nb)
+void	ft_putnbr(int nb)
 {
 	if (nb == INT_MIN)
 		write(1, "-2147483648", 11);
@@ -13,7 +13,7 @@ void	ft_putchar(int nb)
 		}
 		if (nb >= 10)
 		{
-	ft_putnbr		ft_putnbr(nb / 10);
+			ft_putnbr(nb / 10);
 			ft_putnbr(nb % 10);
 		}
 		else
