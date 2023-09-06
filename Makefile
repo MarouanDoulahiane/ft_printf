@@ -1,23 +1,18 @@
-NAME	= libftprintf.a
-SRCS=    ft_printf.c ft_putaddr.c ft_putchar.c ft_putnbr.c \
-            ft_putnbr_base.c ft_putstr.c ft_putnbr_u.c
-OBJ = $(SRCS:%.c=%.o)
-
 CC = gcc
-FLAGS	= -W -W -W
-AR = ar 
-RM = rm -fr
+CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): 
-	$(CC) $(FLAGS) -c $(SRCS) -I ./
-	$(AR) $(NAME) $(OBJ)
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
 
-all: $(NAME)
+all: libft.a
 
-fclean: clean
-	$(RM) NAME
+libft.a: $(OBJ)
+	ar -rcs $@ $^
 
 clean:
-	$(RM) $(OBJ)
+	rm -f $(OBJ) libft.a
+
+fclean: clean
+	rm -f *.o
 
 re: fclean all
