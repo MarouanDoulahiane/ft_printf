@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/10 15:37:04 by marvin            #+#    #+#             */
+/*   Updated: 2023/10/10 15:37:04 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <unistd.h>
 # include <stdarg.h>
 
-void	ft_putaddr(void *ptr);
-void	ft_putnbr(int nb);
-void	ft_putnbr_u(unsigned int nb);
-void	ft_putnbr_base(unsigned int nb, char xX);
-void	ft_putnbr_base_addr(unsigned long nb);
-void	ft_putstr(char *str);
-void	ft_putchar(char c);
 int		ft_printf(const char *format, ...);
 
+void	ft_putchar(char c, int *len);
+void	ft_putstr(char *s, int *len);
+void	ft_putnbr(int nb, int *len);
+void	ft_putunsigned(unsigned int nb, int *len);
+void	ft_puthex(unsigned int nb, char xX, int *len);
+void	ft_putaddress(void *p, int *len);
 
 #endif

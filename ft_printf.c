@@ -1,38 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/10 15:38:13 by marvin            #+#    #+#             */
+/*   Updated: 2023/10/10 15:38:13 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	flag_checker(va_list args,const char format)
+void	print_helper(va_list args, const char *format, int *len)
 {
-	if (format == 'd' || format == 'i')
-		ft_putnbr(va_arg(args, int));
-	else if (format == 'u')
-		ft_putnbr_u(va_arg(args, unsigned int));
-	else if (format == 'c')
-		ft_putchar(va_arg(args, int));
-	else if (format == 's')
-		ft_putstr(va_arg(args, char *));
-	else if (format == 'x' || format == 'X')
-		ft_putnbr_base(va_arg(args, unsigned int), format);
-	else if (format == 'p')
-		ft_putaddr(va_arg(args, void *));
-	else if (format == '%')
-		ft_putchar('%');
+	if (*format == 'c')
+		ft_putchar(va_arg(args, int), len);
+	else if (*format == 'c')
+		ft_putstr(va_arg(args, char *), len);
+	else if (*format == 'd' || *format == 'i')
+		ft_putnbr(va_arg(args, int), len);
+	else if (*format == 'u')
+		ft_putunsigned(va_arg(args, unsigned int), len);
+	else if (*format == '%')
+		ft_putchar('%', len);
+	else if (*format == 'x' || *format == 'X')
+		ft_puthex(va_arg(args, unsigned int), *format, len);
+	else if (*format == 'p')
+		ft_putaddress(va_arg(args, void *), len);
+	format++;
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
+	int		len;
 
 	va_start(args, format);
-	while (*format != '\0')
+	len = 0;
+	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			flag_checker(args, *format);
+			print_helper(args, format, &len);
 		}
 		else
-			ft_putchar(*format);
+			ft_putchar(*format, &len);
 		format++;
 	}
-	return 0;
+	va_end(args);
+	return (len);
 }

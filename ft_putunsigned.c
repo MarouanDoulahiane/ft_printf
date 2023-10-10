@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:50:10 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/10 15:50:10 by marvin           ###   ########.fr       */
+/*   Created: 2023/10/10 15:57:27 by marvin            #+#    #+#             */
+/*   Updated: 2023/10/10 15:57:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *s, int *len)
+void	ft_putunsigned(unsigned int nb, int *len)
 {
-	while (*s)
+	if (nb >= 10)
 	{
-		ft_putchar(*s++, len);
+		ft_putunsigned(nb / 10, len);
+		ft_putunsigned(nb % 10, len);
 	}
+	else
+		ft_putchar(nb + 48, len);
 }

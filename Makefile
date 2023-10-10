@@ -1,22 +1,16 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+SRC =	ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c \
+		ft_putunsigned.c ft_puthex.c ft_putaddress.c
+OBJ =	$(SRC:.c=.o);
 
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
+NAME = libftprintf.a
 
-all: libft.a
-
-libft.a: $(OBJ)
-	@ar -rcs $@ $^
-
-%.o:%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-fclean: clean
-	@rm -f libft.a
+all: $(OBJ)
+	@ar -rcs $(NAME) $(OBJ)
 
 clean:
-	@rm -f $(OBJ)
+	@rm -fr $(OBJ)
 
+fclean: clean
+	@rm -fr $(NAME)
 
 re: fclean all
