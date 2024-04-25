@@ -19,3 +19,12 @@ To compile and use the function, ensure you have the following:
 Navigate to the library path and execute:
 ```shell
 $ make
+```
+Using it in your code:
+Include the library's header file in your code:
+
+```c
+#include "ft_printf.h"
+```
+### Testing
+You can use third-party testers like [Tripouille/printfTester](https://github.com/Tripouille/printfTester) for comprehensive testing.
